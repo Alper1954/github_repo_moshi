@@ -4,5 +4,5 @@ data class GitHubRepo (
     val id:String,
     val name:String,
     //val language:String,
-    //val description:String
+    val description:String
 )

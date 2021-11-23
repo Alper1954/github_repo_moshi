@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.githubrepolist.ItemAdapter
 
 import com.example.githubrepolist.R
 import com.example.githubrepolist.databinding.FragmentRepoListBinding
@@ -28,7 +29,7 @@ class RepoListFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRepoListBinding.inflate(inflater, container, false)
         viewModel.getUserRepositories(user as String)
         return binding.root
@@ -37,9 +38,13 @@ class RepoListFrag : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.status.observe(viewLifecycleOwner, {
+        val itemAdapter= ItemAdapter()
+        binding.recyclerView.adapter = itemAdapter
+
+
+        viewModel.repos.observe(viewLifecycleOwner, {
             it?.let {
-                binding.nbRepos.text = viewModel.status.value
+                itemAdapter.submitList(it)
             }
         })
     }
