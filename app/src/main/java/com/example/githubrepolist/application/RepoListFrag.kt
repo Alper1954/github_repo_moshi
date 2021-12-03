@@ -14,10 +14,8 @@ import com.example.githubrepolist.databinding.FragmentRepoListBinding
 class RepoListFrag : Fragment() {
 
     private val viewModel: RepoModel by viewModels()
-
     private lateinit var binding:FragmentRepoListBinding
     private var user:String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -40,7 +38,6 @@ class RepoListFrag : Fragment() {
 
         val itemAdapter= ItemAdapter()
         binding.recyclerView.adapter = itemAdapter
-
 
         viewModel.repos.observe(viewLifecycleOwner, {
             it?.let {

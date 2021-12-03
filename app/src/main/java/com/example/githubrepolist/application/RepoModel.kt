@@ -5,12 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.githubrepolist.network.GitHubApi
-import com.example.githubrepolist.network.GitHubApi.retrofitService
 import com.example.githubrepolist.network.GitHubRepo
 import kotlinx.coroutines.launch
 
 class RepoModel: ViewModel() {
-
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String> = _status
